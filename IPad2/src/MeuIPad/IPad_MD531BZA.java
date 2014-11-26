@@ -34,6 +34,11 @@ public class IPad_MD531BZA extends IPad{
         contIpad_MD531BZA++;
     }
 
+    public void ativarCalculadora() {
+        this.calculadora.mostrarCalculadora();
+    }
+
+    
     public static int getContIpad_MD531BZA() {
         return contIpad_MD531BZA;
     }

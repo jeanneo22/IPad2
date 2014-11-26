@@ -79,9 +79,9 @@ public abstract class IPad implements Device,Comparable<IPad>,Autenticavel,Geren
     }
 
     public void setCor(int valorCor) {
-        /*if(valorCor >= 0 && valorCor <= 3)
-            //this.cor.setValorCor(valorCor);
-        //else//this.cor.setValorCor(0);*/
+       if(valorCor >= 0 && valorCor <= 3)
+            this.cor.setValorCor(valorCor);
+       else this.cor.setValorCor(0);
     }
 
     public void setTipoTela(String tipoTela) {
@@ -99,7 +99,7 @@ public abstract class IPad implements Device,Comparable<IPad>,Autenticavel,Geren
 
     public void setUsuarioIpad(Usuario usuarioIpad) {
         this.usuarioIpad.setNome(usuarioIpad.getNome());
-        this.usuarioIpad.setSenha(usuarioIpad.getSenha());
+        this.usuarioIpad.setSenha(usuarioIpad);
     }
     
     public int getCodigoBarras() {
@@ -179,6 +179,9 @@ public abstract class IPad implements Device,Comparable<IPad>,Autenticavel,Geren
     
     @Override
     public void autenticar (String nome, int senha) {
-        
+        if(this.usuarioIpad.getNome().equals(nome) && this.usuarioIpad.getSenha() == senha)
+            System.out.println("Autenticacao valida");
+        else
+            System.out.println("Nao foi possivel autenticar");
     }
 }

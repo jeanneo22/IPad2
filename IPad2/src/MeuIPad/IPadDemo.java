@@ -53,6 +53,9 @@ public class IPadDemo {
         Usuario usuario3 = new Usuario();
         usuario3.cadastraUsuario();
         MeuIPad3.tocarTela(2,3);
+        
+        if(MeuIPad1 instanceof IPad_MD531BZA)
+           MeuIPad1.ativarCalculadora();
        
         MeuIPad1.imprime();
         System.out.println();

@@ -18,7 +18,7 @@ public class Usuario implements Autenticavel{
 
     public Usuario(String nome, int senha) {
         this.nome = nome;
-        setSenha(senha);
+        setSenha();
     }
 
     public Usuario() {
@@ -35,10 +35,14 @@ public class Usuario implements Autenticavel{
         this.nome = nome;
     }
 
-    public void setSenha(int senha) {
-        // gera um numero aleatorio entre 1 e 1000
+    public void setSenha() {
+        // gera um numero aleatorio entre 0 e 10000
         Random gerador = new Random();
-        this.senha = gerador.nextInt(1000);
+        this.senha = gerador.nextInt(10001);
+    }
+    
+    public void setSenha(Usuario usuario) {
+        this.senha = usuario.senha;
     }
 
     public String getNome() {
@@ -51,17 +55,23 @@ public class Usuario implements Autenticavel{
     
     public void cadastraUsuario() {
         setNome(JOptionPane.showInputDialog("Nome "));
-        setSenha(Integer.parseInt(JOptionPane.showInputDialog("Senha ")));
+        setSenha();
+        JOptionPane.showMessageDialog(null,"Senha criada com sucesso");
     }
     
     @Override
     public String toString() {
-        String s = "Nome: "+nome+" Senha: "+senha;
+        String s = "Nome: "+this.nome+" Senha: "+this.senha;
         return s;
     }
 
     @Override
     public void autenticar(String nome, int senha) {
+        if(this.nome.equals(nome) && this.senha == senha)
+            System.out.println("Autenticacao valida");
+        else
+            System.out.println("Nao foi possivel autenticar");
+        
         
     }
 }
