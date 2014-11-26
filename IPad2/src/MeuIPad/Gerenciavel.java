@@ -10,10 +10,6 @@ package MeuIPad;
  *
  * @author Jeanne
  */
-public interface Device  {
+public interface Gerenciavel {
     
-    public abstract void ligar();
-    public abstract void desligar();
-    public abstract boolean isLigado(); 
-    public abstract void imprime(); 
 }

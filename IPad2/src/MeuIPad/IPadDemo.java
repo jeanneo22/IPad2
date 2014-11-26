@@ -5,7 +5,6 @@
  */
 
 package MeuIPad;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,42 +18,51 @@ public class IPadDemo {
     }
     
     public static void main(String args[]) {
-        IPadAir MeuIPadAir = new IPadAir();
-        IPadMini MeuIPadMini = new IPadMini();
-        IPadKids MeuIPadKids = new IPadKids();
+        IPad_MD531BZA MeuIPad1 = new IPad_MD531BZA();
+        IPad_MD794BRA MeuIPad2  = new IPad_MD794BRA();
+        IPad_MD510BRA MeuIPad3 = new IPad_MD510BRA();
         String nome;
         int senha;
         
-        MeuIPadAir.ligar();
-        MeuIPadAir.setModelo("MD791BR/A");
-        MeuIPadAir.setCodigoBarras(885909679);
-        MeuIPadAir.setCor(3);
-        MeuIPadAir.setMesesGarantia(12);
-        MeuIPadAir.setPesoLiq(469);
-        MeuIPadAir.setTipoTela("Tela Convencional");
-        UsuarioIPad usuario1 = new UsuarioIPad();
+        MeuIPad1.ligar();
+        MeuIPad1.setCodigoBarras(885909679);
+        MeuIPad1.setCor(3);
+        MeuIPad1.setMesesGarantia(12);
+        MeuIPad1.setPesoLiq(469);
+        MeuIPad1.setTipoTela("Tela Convencional");
+        Usuario usuario1 = new Usuario();
         usuario1.cadastraUsuario();
-        MeuIPadAir.tocarTela(2,3);
+        MeuIPad1.tocarTela(2,3);
         
-        MeuIPadMini.ligar();
-        MeuIPadMini.setModelo("MD537BZ/A");
-        MeuIPadMini.setCodigoBarras(885909634);
-        MeuIPadMini.setCor(1);
-        MeuIPadMini.setMesesGarantia(12);
-        MeuIPadMini.setPesoLiq(308);
-        MeuIPadMini.setTipoTela("Tela de Retina");
-        UsuarioIPad usuario2 = new UsuarioIPad();
+        MeuIPad2.ligar();
+        MeuIPad2.setCodigoBarras(885909634);
+        MeuIPad2.setCor(1);
+        MeuIPad2.setMesesGarantia(12);
+        MeuIPad2.setPesoLiq(308);
+        MeuIPad2.setTipoTela("Tela de Retina");
+        Usuario usuario2 = new Usuario();
         usuario2.cadastraUsuario();
-        MeuIPadMini.tocarTela(2,3);
+        MeuIPad2.tocarTela(2,3);
+        
+        MeuIPad3.ligar();
+        MeuIPad3.setCodigoBarras(885909634);
+        MeuIPad3.setCor(1);
+        MeuIPad3.setMesesGarantia(12);
+        MeuIPad3.setPesoLiq(308);
+        MeuIPad3.setTipoTela("Tela de Retina");
+        Usuario usuario3 = new Usuario();
+        usuario3.cadastraUsuario();
+        MeuIPad3.tocarTela(2,3);
        
-        
-        
-        MeuIPadAir.imprime();
+        MeuIPad1.imprime();
         System.out.println();
-        MeuIPadMini.imprime();
-        System.out.println();  
-        IPadDemo.isIPad(MeuIPadAir);
-        IPadDemo.isIPad(MeuIPadMini);
+        MeuIPad2.imprime();
+        System.out.println();
+        MeuIPad3.imprime();
+        System.out.println();
+        IPadDemo.isIPad(MeuIPad1);
+        IPadDemo.isIPad(MeuIPad2);
+        IPadDemo.isIPad(MeuIPad3);
     }
     
 }

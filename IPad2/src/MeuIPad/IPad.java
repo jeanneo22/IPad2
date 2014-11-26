@@ -5,12 +5,14 @@
  */
 
 package MeuIPad;
-import java.util.ArrayList;
+
+import Representacao2D.Ponto;
+
 /**
  *
  * @author Jeanne
  */
-public abstract class IPad implements Device,Comparable<IPad>{
+public abstract class IPad implements Device,Comparable<IPad>,Autenticavel,Gerenciavel{
     
     public enum Cor {
         Nenhuma,Branco,Preto,CinzaEspacial;
@@ -26,7 +28,6 @@ public abstract class IPad implements Device,Comparable<IPad>{
         }
     }
     
-    protected String modelo;
     protected int codigoBarras;
     protected float pesoLiq; // Peso liq em gramas
     protected boolean ligado;
@@ -34,24 +35,20 @@ public abstract class IPad implements Device,Comparable<IPad>{
     protected String tipoTela;
     protected int mesesGarantia;
     protected Ponto coordenadasTela;
-    protected UsuarioIPad usuarioIpad;
-    protected ArrayList<String> funcionalidades;
+    protected Usuario usuarioIpad;
     protected static final int GARANTIA_MAXIMA = 36; // 36 meses ou 3 anos
 
-    public IPad(String modelo, int codigoBarras, float pesoLiq,String cor, String tipoTela, int mesesGarantia, Ponto coordenadasTela, UsuarioIPad usuarioIpad) {
-        setModelo(modelo);
+    public IPad(int codigoBarras, float pesoLiq,String cor, String tipoTela, int mesesGarantia, Ponto coordenadasTela, Usuario usuarioIpad) {
         setCodigoBarras(codigoBarras);
         setPesoLiq(pesoLiq);
         setCor(0);
         setTipoTela(tipoTela);
         setMesesGarantia(mesesGarantia);
         this.coordenadasTela = new Ponto(coordenadasTela);
-        this.usuarioIpad = new UsuarioIPad(usuarioIpad);
-        funcionalidades = new ArrayList<>(10);
+        this.usuarioIpad = new Usuario(usuarioIpad);
     }
 
     public IPad() {
-        this.modelo = "";
         this.codigoBarras = 000000000;
         this.pesoLiq = 0.00F;
         this.ligado = false;
@@ -59,11 +56,10 @@ public abstract class IPad implements Device,Comparable<IPad>{
         this.tipoTela = "";
         this.mesesGarantia = 0;
         this.coordenadasTela = new Ponto();
-        this.usuarioIpad = new UsuarioIPad();
+        this.usuarioIpad = new Usuario();
     }
 
     public IPad(IPad ipadOriginal) {
-        this.modelo = ipadOriginal.modelo;
         this.codigoBarras = ipadOriginal.codigoBarras;
         this.pesoLiq = ipadOriginal.pesoLiq;
         this.ligado = ipadOriginal.ligado;
@@ -72,10 +68,6 @@ public abstract class IPad implements Device,Comparable<IPad>{
         this.mesesGarantia = ipadOriginal.mesesGarantia;
         this.coordenadasTela = ipadOriginal.coordenadasTela;
         this.usuarioIpad = ipadOriginal.usuarioIpad;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
     }
 
     public void setCodigoBarras(int codigoBarras) {
@@ -105,19 +97,11 @@ public abstract class IPad implements Device,Comparable<IPad>{
         this.coordenadasTela.setY(coordenadasTela.getY());
     }
 
-    public void setUsuarioIpad(UsuarioIPad usuarioIpad) {
+    public void setUsuarioIpad(Usuario usuarioIpad) {
         this.usuarioIpad.setNome(usuarioIpad.getNome());
         this.usuarioIpad.setSenha(usuarioIpad.getSenha());
     }
     
-    public void setFuncionalidade(String funcionalidade) {
-        funcionalidades.add(funcionalidade);
-    }
-    
-    public String getModelo() {
-        return modelo;
-    }
-
     public int getCodigoBarras() {
         return codigoBarras;
     }
@@ -142,15 +126,9 @@ public abstract class IPad implements Device,Comparable<IPad>{
         return coordenadasTela;
     }
 
-    public UsuarioIPad getUsuarioIpad() {
+    public Usuario getUsuarioIpad() {
         return usuarioIpad;
     }
-    
-    public String getFuncionalidade(int i) {
-        return funcionalidades.get(i);
-    }
-    
-    public abstract void inicializaFuncionalidades();
     
     @Override
     public void ligar() {
@@ -197,5 +175,10 @@ public abstract class IPad implements Device,Comparable<IPad>{
         }else {
             return false;
         }
+    }
+    
+    @Override
+    public void autenticar (String nome, int senha) {
+        
     }
 }

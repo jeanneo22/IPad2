@@ -10,10 +10,7 @@ package MeuIPad;
  *
  * @author Jeanne
  */
-public interface Device  {
+public interface Autenticavel {
+    public abstract void autenticar(String nome,int senha);
     
-    public abstract void ligar();
-    public abstract void desligar();
-    public abstract boolean isLigado(); 
-    public abstract void imprime(); 
 }
