@@ -7,6 +7,7 @@
 package MeuIPad;
 
 import Representacao2D.Ponto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +38,6 @@ public class IPad_MD531BZA extends IPad{
     public void ativarCalculadora() {
         this.calculadora.mostrarCalculadora();
     }
-
     
     public static int getContIpad_MD531BZA() {
         return contIpad_MD531BZA;
@@ -55,5 +55,21 @@ public class IPad_MD531BZA extends IPad{
         System.out.println("Meses de Garantia: "+this.mesesGarantia);
         System.out.println("Coordenadas apontadas na tela pelo usuario: "+this.coordenadasTela);
         System.out.println("Usuario do IPad - "+this.usuarioIpad);
+    }
+    
+    @Override
+    public void gerenciar() {
+        short tecla = 0;
+        System.out.println("Qual acao deseja: ");
+        do {
+            tecla = Short.parseShort(JOptionPane.showInputDialog("1. Ativar calculadora\n 2. sair"));
+            switch(tecla) {
+                case 1:
+                    this.ativarCalculadora();
+                    break;
+                case 2:
+                    break;
+            }
+        } while(tecla != 2);
     }
 }

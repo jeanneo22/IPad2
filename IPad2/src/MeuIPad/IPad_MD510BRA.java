@@ -7,6 +7,7 @@
 package MeuIPad;
 
 import Representacao2D.Ponto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,6 +38,11 @@ public class IPad_MD510BRA extends IPad{
         this.mp3 = new MP3Player(ipadOriginal.mp3);
         contIpad_MD510BRA++;
     }
+    
+    public void ativarCalculadora() {
+        this.calculadora.mostrarCalculadora();
+    }
+
 
     public static int getContIpad_MD510BRA() {
         return contIpad_MD510BRA;
@@ -54,6 +60,26 @@ public class IPad_MD510BRA extends IPad{
         System.out.println("Meses de Garantia: "+this.mesesGarantia);
         System.out.println("Coordenadas apontadas na tela pelo usuario: "+this.coordenadasTela);
         System.out.println("Usuario do IPad - "+this.usuarioIpad);
+    }
+
+    @Override
+    public void gerenciar() {
+        short tecla = 0;
+        System.out.println("Qual acao deseja: ");
+        do {
+             tecla = Short.parseShort(JOptionPane.showInputDialog("1. Ativar calculadora\n 2. Ouvir musica\n 3. sair"));
+             switch(tecla) {
+                case 1:
+                    this.ativarCalculadora();
+                    break;
+                case 2:
+                    int n = Integer.parseInt(JOptionPane.showInputDialog("Numero da musica: "));
+                    this.mp3.tocarMusica(n);
+                    break;
+                case 3:
+                    break;
+            }
+        }while(tecla != 3);
     }
     
 }

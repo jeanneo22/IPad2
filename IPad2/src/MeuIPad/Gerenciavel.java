@@ -11,5 +11,6 @@ package MeuIPad;
  * @author Jeanne
  */
 public interface Gerenciavel {
+    public abstract void gerenciar();
     
 }

@@ -7,6 +7,7 @@
 package MeuIPad;
 
 import Representacao2D.Ponto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,23 @@ public class IPad_MD794BRA extends IPad{
         System.out.println("Meses de Garantia: "+this.mesesGarantia);
         System.out.println("Coordenadas apontadas na tela pelo usuario: "+this.coordenadasTela);
         System.out.println("Usuario do IPad - "+this.usuarioIpad);
+    }
+    
+    @Override
+    public void gerenciar() {
+        short tecla = 0;
+        System.out.println("Qual acao deseja: ");
+        do {
+            tecla = Short.parseShort(JOptionPane.showInputDialog("1. Ouvir musica\n 2. sair"));
+            switch(tecla) {
+                case 1:
+                    int n = Integer.parseInt(JOptionPane.showInputDialog("Numero da musica: "));
+                    this.mp3.tocarMusica(n);
+                    break;
+                case 2:
+                    break;
+            }
+        } while(tecla != 2);
     }
     
     
