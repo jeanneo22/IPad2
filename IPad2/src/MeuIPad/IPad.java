@@ -52,7 +52,7 @@ public abstract class IPad implements Device,Comparable<IPad>,Autenticavel,Geren
         this.codigoBarras = 000000000;
         this.pesoLiq = 0.00F;
         this.ligado = false;
-        //this.cor.setValorCor(0);
+        this.cor.setValorCor(0);
         this.tipoTela = "";
         this.mesesGarantia = 0;
         this.coordenadasTela = new Ponto();
